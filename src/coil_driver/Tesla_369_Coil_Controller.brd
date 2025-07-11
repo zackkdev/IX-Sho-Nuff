@@ -1,0 +1,51 @@
+PCBNEW-BOARD Version 1
+LayerCount 2
+Layer 0 Front.Cu signal
+Layer 31 Back.Cu signal
+Layer 34 Edge.Cuts user
+Layer 35 Margin user
+Layer 36 B.CrtYd user
+Layer 37 F.CrtYd user
+Layer 38 B.Fab user
+Layer 39 F.Fab user
+
+$Description
+Tesla 369 Coil Controller PCB Layout for IX-Sho-Nuff Project
+Bryce Wooster
+$EndDescription
+
+$Layers
+0 F.Cu signal
+31 B.Cu signal
+34 Edge.Cuts user
+$EndLayers
+
+$Setup
+LayerThickness 0.035
+CopperThickness 0.035
+$EndSetup
+
+$NetData
+Net 0 ""
+Net 1 "FPGA_369_SIGNAL"
+Net 2 "GND"
+$EndNetData
+
+$ComponentData
+R1 2000 1500 0 0 1 0
+C1 2300 1500 0 0 1 0
+Q1 2600 1400 0 0 1 0
+L1 3000 1200 0 0 1 0
+$EndComponentData
+
+$TrackData
+Segment R1.Pad1 FPGA_369_SIGNAL (2000 1500) (1900 1500)
+Segment R1.Pad2 C1.Pad1 (2100 1500) (2300 1500)
+Segment Q1.PadB R1.Pad2 (2500 1500) (2600 1500)
+Segment Q1.PadE GND (2600 1600) (2600 1800)
+Segment Q1.PadC L1.Pad1 (2800 1400) (3000 1200)
+$EndTrackData
+
+$ZoneData
+Zone "GND" (All Layer) (0 0) (4000 3000)
+$EndZoneData
