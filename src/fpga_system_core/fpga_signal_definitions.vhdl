@@ -1,5 +1,7 @@
 -- IX-Sho-Nuff 2.0
--- FPGA Signal Definitions Module
+-- FPGA Signal Definitions Package
+-- Centralized signal type declarations for coherent system-wide signal management
+-- Supports phase control, acoustic control, temperature monitoring across modules
 -- Copyright (c) 2025 Bryce Wooster
 -- License: See /LICENSE for full legal terms.
 
@@ -7,21 +9,19 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
--- This file declares all core signal types and constants used across the FPGA system
-
 package fpga_signal_definitions is
 
-    -- System-wide Constants
-    constant CLOCK_FREQUENCY    : integer := 100_000_000; -- 100 MHz FPGA system clock
-    constant PHASE_RESOLUTION   : integer := 16; -- 16-bit resolution for phase data
-    constant ACOUSTIC_RESOLUTION: integer := 16; -- 16-bit resolution for acoustic feedback
+    -- Define phase control signal type (16-bit for precision PWM control)
+    subtype phase_signal is STD_LOGIC_VECTOR(15 downto 0);
 
-    -- Type Declarations
-    subtype phase_signal is STD_LOGIC_VECTOR(PHASE_RESOLUTION-1 downto 0);
-    subtype acoustic_signal is STD_LOGIC_VECTOR(ACOUSTIC_RESOLUTION-1 downto 0);
+    -- Define acoustic control signal type (16-bit for precision PWM control)
+    subtype acoustic_signal is STD_LOGIC_VECTOR(15 downto 0);
 
-    -- Scalar/Acoustic Setpoint Constants (pre-multiplied by 100 for integer PID math)
-    constant DEFAULT_PHASE_TARGET    : integer := 12000; -- 120.00 degrees
-    constant DEFAULT_ACOUSTIC_TARGET : integer := 14300; -- 14.3 kHz
+    -- Define general control bus (32-bit)
+    subtype control_bus is STD_LOGIC_VECTOR(31 downto 0);
 
+end fpga_signal_definitions;
+
+package body fpga_signal_definitions is
+    -- No body content required for simple type definitions
 end fpga_signal_definitions;
